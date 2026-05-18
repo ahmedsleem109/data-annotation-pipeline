@@ -1,0 +1,17 @@
+s3:
+  bucket: your-bucket
+  dataset_name: my-dataset
+  version: v1
+
+quality:
+  blur_threshold: 100.0
+  hash_distance_threshold: 8
+
+label_studio:
+  url: http://localhost:8080
+  api_key: your-api-key
+  project_id: 1
+
+pre_annotation:
+  model: yolov8n.pt
+  confidence_threshold: 0.3

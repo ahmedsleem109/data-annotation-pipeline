@@ -1,0 +1,25 @@
+version: "3.8"
+
+services:
+  label-studio:
+    image: heartexlabs/label-studio:latest
+    ports:
+      - "8080:8080"
+    volumes:
+      - label_studio_data:/label-studio/data
+    environment:
+      - LABEL_STUDIO_DISABLE_SIGNUP_WITHOUT_LINK=true
+
+  pipeline:
+    build: .
+    volumes:
+      - ./data:/data
+      - ./exports:/exports
+      - ./configs:/app/configs
+    environment:
+      - AWS_DEFAULT_REGION=us-east-1
+    depends_on:
+      - label-studio
+
+volumes:
+  label_studio_data:
